@@ -1,0 +1,46 @@
+<header id="header" class="header">
+        <div id="header-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-4">
+
+                           <h1 class="logo">
+                             <a href="https://forhey.com"><img src="assets/images/logo.png" title="Forhey Laundry Service - Logo" alt="Forhey Laundry Service - Logo"></a>
+                            </h1>
+                        </div>
+                        <div class="col-sm-8" style="text-align:bottom">
+                            <div class="widget widget-contact" style="text-align:right;margin-top:35px">                                
+                                <p style="color:#59A0EE;font-weight:bold;margin-bottom: 0px"> <img ng-src="https://forhey.com/partnerLogos/{{profileImg}}" height="40px" width="40px" style="border-radius: 20px;"> {{client_name}} &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;<a href="" ng-click="logout()" style="color:#59A0EE;" >Sign Out</a></p>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>   
+</header>
+<div class="upper-wrapper">
+    <section class="login-section access-section section" style="padding-bottom: 40px" >
+        <div class="container">
+    <div class="row">
+        <ul class="nav nav-tabs" id="nav">
+        <li id="order-tab"  ui-sref-active="active" ui-sref=".orderList">
+            <a href="" style="text-decoration:none;font-weight:normal;border-right: 1px solid #dadada;"  role="tab"><i class="glyphicon glyphicon-list-alt title_glyphs"></i> Orders</a>
+            
+        </li>
+        <li id="profile-tab"   ui-sref-active="active" ui-sref=".profile">
+            <a href="" style="text-decoration:none; border-right: 1px solid #dadada;" role="tab"><i class="glyphicon glyphicon-info-sign title_glyphs"></i>Profile Info</a>
+        </li>
+        <li id="settings-tab"   ui-sref-active="active" ui-sref=".settings">
+            <a href="" style="text-decoration:none; border-right: 1px solid #dadada;" role="tab"><i class="glyphicon glyphicon-cog title_glyphs"></i>Settings</a>
+        </li>
+        
+    </ul>
+    <div  class="tab-content" style="padding-bottom: 0px;">
+        
+        <div ui-view="childView">
+        </div>
+    </div>
+       
+  </div>
+</div>
+    </section>
+</div>

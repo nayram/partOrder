@@ -2,8 +2,7 @@
 angular.module('Home')
 .controller('HomeController',['$scope','$rootScope','$state','AuthService',function($scope,$rootScope,$state,AuthService){
 	 
-	$scope.client_name=$rootScope.globals.currentUser.userData.name;
-	$scope.profileImg=$rootScope.globals.currentUser.userData.logo;
+	
 	$scope.getProfileImg=function(){
 
 		return "https://forhey.com/partnerLogos/"+$rootScope.globals.currentUser.userData.logo;
