@@ -38,9 +38,7 @@ angular.module('Home')
         }
     }
 
-    $scope.viewInvoice=function(){
-        $window.open("https://forhey.com/download/getFile.php?download_file="+$scope.order.invoice,'_blank');
-    }
+    
 
 
 
