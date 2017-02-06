@@ -4,15 +4,7 @@ angular.module('Home')
 	function($scope,$rootScope,$state,$window,AuthService){
 
 	$scope.selectedOrder={};
-	$scope.inventoryItem=[
-			"Bed Linen","Blanket",
-			"Curtain","Duvet",
-			"Pillows","Pillow Casess",
-			"Towels"];
-			$scope.invList={
-				quantity:1
-			};
-		$scope.inventoryType=["King Size","Queen Size","Double"];
+	
 	var selectedIndex;
 	$scope.dtOptions ={
 			"searching": false,
@@ -25,7 +17,6 @@ angular.module('Home')
 		$scope.inventoryList=$scope.order.inventoryList;
 		console.log($scope.order);
 		$scope.addInventoryItem=function(){
-			// console.log($scope.invList);
 			if (($scope.invList.description !="") && ($scope.invList.type !="") && ($scope.invList.quantity>0)) {
 				console.log($scope.invList.length);
 				$scope.inventoryList.push($scope.invList);
