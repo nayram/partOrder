@@ -33,8 +33,6 @@ angular.module('Home')
 					quantity:1
 				};
 				addSummary();
-			}else{
-				// console.log($scope.invList.description+" "+$scope.invList.type+" "+$scope.invList.quantity);
 			}
 			
 		}
@@ -59,12 +57,7 @@ angular.module('Home')
 		}
 
 		$scope.updateOrder=function(){
-			if ($("#pickupDate").val() =="" ) {
-				// toastr.error("Please add a pickup date & time",  "Order Update");
-			}else if ($scope.inventoryList.length ==0) {
-				$scope.error="Please add inventory";
-			}else {
-				var pickupDateTime=$("#pickupDate").val();
+			var pickupDateTime=$("#pickupDate").val();
         		var pDate=pickupDateTime.split(" ");        
         		var pTime=pDate[1];
         		var date = moment(pDate[0], "DD.MM.YYYY").format("YYYY-M-D");
@@ -88,8 +81,7 @@ angular.module('Home')
 					}else{
 						$scope.error="Order update failed. Please try again";
 					}
-				});
-			}	
+				});	
 					
 		}
 

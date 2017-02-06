@@ -1,18 +1,15 @@
 'use strict';
 angular.module('Home')
 .controller('OrderListController',['$scope','$rootScope','$state','AuthService','DTOptionsBuilder','$window',function($scope,$rootScope,$state,AuthService,DTOptionsBuilder,$window){
-	// console.log($rootScope.globals.currentUser);
 	$scope.dtOptions ={
 		"searching": false,
 		"order":[],
 		"bFilter": false,
 		"lengthChange": false,
-	} //DTOptionsBuilder.newOptions()
-          //.withOption('order', []);
+	} 
 
 	$scope.dataLoading=true;
 	var email=$rootScope.globals.currentUser.userData.email;
-	// console.log(email);
   if ($state.params.status) {
     if ($state.params.status=="success") {
       $scope.success="Order Placed Successfully";
@@ -33,7 +30,6 @@ angular.module('Home')
         var quantity=0;
         angular.forEach(value, function(index) {
             quantity=quantity+parseInt(index.quantity);
-                // $scope.summary= $scope.summary+""+index.quantity+"  "+index.description+"  ("+index.type+") \n";
             });
         return quantity;
     }
@@ -42,28 +38,25 @@ angular.module('Home')
       console.log('place order');
     }
 
-    $scope.viewInvoice=function(obj){
-        $window.open("https://forhey.com/download/getFile.php?download_file="+obj.invoice,'_blank');
-    }
+    
 
 	$rootScope.setOrderStatus=function(response){
-      $scope.content=response.status;
-      if (response.invoice_status == '1') {
-            $scope.invoiceAvail=true;
-      }else{
-            $scope.invoiceAvail=false;
-      }
-      if (response.status=='0') {
-          return "Order";
-      }else if (response.status=='1') {
-        return "Pick up";
-      }else if (response.status=='2') {
-        return "Cleaning";
-      }else if (response.status=='3') {
-        return "Delivered";
-      }else if (response.status=='4') {
-        return "En route";
-      };
+      
+      switch(response.status){
+          case '0':
+              return "Order";
+              break;
+          case '1':
+              return "Pick up";
+              break;
+          case '2':
+              return "Cleaning";
+              break;
+          case '3':
+              return "Delivered";
+              break;
+         
+        }
       
     }
 

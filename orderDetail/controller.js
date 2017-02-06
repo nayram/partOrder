@@ -20,7 +20,6 @@ angular.module('Home')
         var quantity=0;
         angular.forEach($scope.order.inventoryList, function(index) {
             quantity=quantity+parseInt(index.quantity);
-                // $scope.summary= $scope.summary+""+index.quantity+"  "+index.description+"  ("+index.type+") \n";
             });
         return quantity;
     }

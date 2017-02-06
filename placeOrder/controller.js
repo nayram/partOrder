@@ -9,13 +9,7 @@ angular.module('Home')
 			"bFilter": false,
 			"lengthChange": false,
 		}
-		$scope.inventoryItem=[
-			"Bed Linen","Blanket",
-			"Curtain","Duvet",
-			"Pillows","Pillow Cases",
-			"Towels"];
-
-		$scope.inventoryType=["King Size","Queen Size","Double"];
+		
 		$scope.invList={
 			
 			quantity:1
@@ -31,8 +25,6 @@ angular.module('Home')
 					quantity:1
 				};
 				addSummary();
-			}else{
-				// console.log($scope.invList.description+" "+$scope.invList.type+" "+$scope.invList.quantity);
 			}
 			
 		}
@@ -65,7 +57,6 @@ angular.module('Home')
 			$scope.vm.selectTab(1);
 		}
 
-		// $state.go('home.orderContent',{'id':'all'});
 		$scope.addOrder=function(){
 			var pickupDateTime=$("#pickupDate").val();
         	var pDate=pickupDateTime.split(" ");        
@@ -124,7 +115,6 @@ angular.module('Home')
         this.isSelected=function(checkTab){
         return this.tab===checkTab;
       };
-      // getPartners();
       $('*[name=pickupDate]').appendDtpicker({
             "closeOnSelected": true,
                             "futureOnly": true,
