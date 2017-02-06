@@ -1,0 +1,65 @@
+ <div>
+    <p style="color:#fff">
+        Order Inventory
+    </p>
+	<fieldset >
+  		<legend style="color:#68C5B5;font-size:17px"></legend>     
+        <form role="form" ng-submit="addInventoryItem()" style="margin-left:40px;margin-right:40px">
+        	<div class="row">
+        		<div class="col-sm-4" >
+        			<p style="color: #68C5B5;font-weight: 600;font-size: 17px;">
+        				Description
+        				<select class="form-control" id="invItem" name="invItem" ng-model="invList.description" ng-options="x for x in inventoryItem"  required></select> 
+        			</p>
+            		
+        		</div>
+        		<div class="col-sm-3" >
+        			<p style="color: #68C5B5;font-weight: 600;font-size: 17px">
+        				Type 
+        				<select class="form-control" id="invType" name="invType" ng-model="invList.type" ng-options="x for x in inventoryType" required></select>
+        			</p>           		
+        		</div>
+        		<div class="col-sm-3">
+        		   <p style="color: #68C5B5;font-weight: 600;font-size: 17px">Quantity <input type="number" class="form-control" ng-model="invList.quantity" name=""  min="1" > </p>
+        		</div>
+        		<div class="col-sm-2" style="text-align:center">
+                    <p>                        
+                        <button type="submit" style="margin-top: 30px;" class="btn btn-success btn-space"><i class="glyphicon glyphicon-plus-sign"></i></button> 
+                    </p>
+        		</div>
+        	</div>
+        	    
+ 		</form>       	   	                                   
+    </fieldset>
+</div>
+<div >
+     <table id="invTable" datatable="ng" dt-options="dtOptions" class="table ">
+			<thead>
+				<tr style="color:#68C5B5;font-size:17px">
+            		<th >Description</th>
+              		<th>Type</th>
+              		<th>Quantity</th>
+            		<th></th>
+        		</tr>
+			</thead>		
+			<tbody>
+				<tr style="padding:10px;" ng-repeat="obj in inventoryList">
+                	<td class="spRow" >{{obj.description }}</td>
+                	<td class="spRow" >{{obj.type}}</td>
+                	<td class="spRow" >{{obj.quantity}}</td> 
+                	<td class="spRow">
+                		<div class="btn-group">                 
+                    		<button type="button" class="btn btn-info btn" ng-click="deleteRow($index)"><i class="glyphicon glyphicon-trash"></i></button>
+                		</div> 
+                	</td>                			   
+            	</tr>
+			</tbody>
+		</table>
+    </div> 
+    <div class="form-group" style="text-align:center">    
+        <button  class="btn btn-cta-primary" style="width:300px; margin:auto" ng-click="viewConfirmation()">
+                Save
+        </button>
+           
+    </div>
+</div>    

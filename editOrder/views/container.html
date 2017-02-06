@@ -1,0 +1,42 @@
+<a href="" style="color:#59A0EE;font-size:15px" ng-click="goOrderDet()">
+    <span><i style="margin-left:10px" class="glyphicon glyphicon-arrow-left"></i></span>
+    <span >Back</span>
+    </a>
+<p style="text-align:left;">
+       <h3 style="color:#fff;font-size:20px;margin:5px">
+       	Edit Order Detail
+       </h3> 
+        <!-- <hr> -->
+    </p>
+<div style="background-color:#3D5D77;margin-bottom:15px;margin-top:10px" class="row" >
+	<div class="col-sm-4" >
+		<ul class="editList" style="margin-top:5px">
+  			<li ng-class="{active:editVm.isSelected(1)}">
+  				<a ng-click="editVm.selectTab(1)">Schedule</a>
+  			</li>
+  			<li ng-class="{active:editVm.isSelected(2)}">
+  				<a ng-click="editVm.selectTab(2)">Inventory</a>
+  			</li>
+  			<li ng-class="{active:editVm.isSelected(3)}">
+  				<a ng-click="editVm.selectTab(3)">Instructions</a>
+  			</li>
+		</ul>
+	</div>
+	
+	<div class="col-sm-8" style="border-left:1px solid #f1f1f1">
+  		<div class="editVm" ng-show="editVm.isSelected(1)">
+			<editschedule-page></editschedule-page>
+		</div>
+		<div class="editVm" ng-show="editVm.isSelected(2)">
+			<editinventory-page></editinventory-page>
+		</div>
+		<div class="editVm" ng-show="editVm.isSelected(3)">
+			<editnote-page></editnote-page>
+		</div>
+		<div class="editVm" ng-show="editVm.isSelected(4)">
+			<summary-page></summary-page>
+		</div>
+	
+	</div>
+	
+</div>

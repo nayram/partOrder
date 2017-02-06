@@ -1,0 +1,24 @@
+<div>
+	<h2 class="blockLabel">Orders</h2>
+	<hr>
+	<table id="orderTable" class="table table-striped table-hover table-fw-widget">
+        <thead>
+            <tr>
+                <th>Order #</th>
+                <th>Pickup Date & Time</th>
+                <th>No. Of Items</th>
+                <th>Order Status</th>
+                <th>Payment Status</th>
+            </tr>
+        </thead>        
+        <tbody>
+        	<tr style="padding:10px" ng-repeat="obj in orderList" >
+            	<td>{{obj.server_code}}</td>                
+            	<td>{{obj.pickupDate | amDateFormat:'dddd, MMMM Do YYYY'}} {{obj.pickupTime}}</td>
+            	<td >{{getNumOfItems(obj.inventoryList)}}</td>
+            	<td ng-style="setStatusColor(obj)" >{{setOrderStatus(obj)}}</td>
+            	<td ng-style="setFontColor(obj)" >{{getPaymentStatus(obj)}}</td>
+        	</tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,41 @@
+<div>
+    <div style="text-align:right">
+        <a href="" ui-sref="home.placeOrder" style="color:#68c5b5;">Place Order</a>
+    </div>
+    
+    <div style="text-align:center">
+        <img ng-if="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+    </div>
+    <div ng-show="success" class="alert alert-success">{{success}}</div>
+	<table id="orderTable" datatable="ng" dt-options="dtOptions" class="table">
+        <thead>
+            <tr>
+                <th style="color:#ccc;font-size:17px;text-align:center">Order #</th>
+                <th style="color:#ccc;font-size:17px;text-align:center">Pickup Date </th>
+                <th style="color:#ccc;font-size:17px;text-align:center">No. Of Items</th>
+                <th style="color:#ccc;font-size:17px;text-align:center">Order Status</th>
+                <th style="color:#ccc;font-size:17px;text-align:center">Service Cost</th>
+                <th style="color:#ccc;font-size:17px;text-align:center">Payment Status</th>
+
+            </tr>
+        </thead>        
+        <tbody>
+        	<tr style="padding:10px" ng-repeat="obj in orderList" >
+            	<td style="text-align:center" ng-click="viewDetail(obj)">{{obj.server_code}}</td>    
+            	<td style="text-align:center" ng-click="viewDetail(obj)">{{obj.pickupDate | amDateFormat:'ddd MMM D, YYYY'}}</td>
+            	<td style="text-align:center" ng-click="viewDetail(obj)">{{getNumOfItems(obj.inventoryList)}}</td>
+            	<td style="text-align:center" ng-style="setStatusColor(obj)" 
+                ng-click="viewDetail(obj)">
+                {{setOrderStatus(obj)}}</td>
+                <td style="text-align:center">
+                <label ng-click="viewDetail(obj)">
+                    {{obj.service_cost | currency:"GHS"}}
+                </label><a href="" style="font-size:13px;margin-left:15px ;color: #00FF5E;" ng-if="invoiceAvail" ng-click="viewInvoice(obj)"> <br><span >View Invoice</span>
+                </a></td>
+            	<td style="text-align:center" ng-style="setFontColor(obj)" 
+                ng-click="viewDetail(obj)">{{getPaymentStatus(obj)}}</td>
+                <!-- | amDateFormat:'dddd, MMMM Do YYYY' -->
+        	</tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,35 @@
+<a href="" style="color:#59A0EE;font-size:17px" ng-click="addNote()">
+    <span><i style="margin-left:10px" class="glyphicon glyphicon-arrow-left"></i></span>
+    <span >Back</span>
+    </a>
+<div>
+<p style="text-align:center;font-size:20px;color:#fff">
+        Order Confirmation
+        <hr>
+    </p>
+    <div ng-show="error" class="alert alert-danger">{{error}}</div>
+	<!-- <fieldset >
+  		<legend>Confirmation</legend>  -->    
+        <form role="form" ng-submit="addOrder()"  style="margin-left:40px;margin-right:40px">
+             <div style="margin-top:10px;color: #68C5B5;font-weight:600;">
+                Pickup Date :
+                <input type="text" class="form-control" ng-model="pickupDate" readonly>
+             </div>
+        	 <div style="margin-top:10px;color: #68C5B5;font-weight: 600;">
+        	 	Inventory : 
+        	 	<textarea ng-model="summary" rows="5" class="form-control" readonly>
+        	 		
+        	 	</textarea>
+        	 </div>
+        	 <div style="margin-top:10px;color: #68C5B5;font-weight: 600;">
+        	 	Note :
+        	 	 <textarea class="form-control" ng-model="orderNote" rows="5" readonly></textarea>
+        	 </div>
+        	
+            
+        	 <div style="text-align:center;margin-top:15px;margin-bottom:10px">
+        	 	<button type="submit" class="btn  btn-primary btn-lg" style="width:250px" ng-disabled="accLoading"> Place Order <span><img ng-if="accLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" /></span></button>
+        	 </div>
+        </form>        
+    <!-- </fieldset> -->
+</div>

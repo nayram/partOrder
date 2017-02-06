@@ -1,0 +1,161 @@
+<div class="upper-wrapper" ng-init="1" style="margin-top:10px;
+    padding: 0px 1px;">
+    <section class="login-section access-section section" style="
+    padding-bottom: 0px;
+    padding-top: 0px;">
+    <div ng-if="detail_error" class="alert alert-danger">{{orderDetail_error}}</div>
+    <div ng-if="detail_success" class="alert alert-success">{{orderDetail_success}}</div>
+        <div class="form-box ">     
+            <div class="form-box-inner" style="padding-top: 0px;"> 
+                <div class="row">
+                    <div class="form-container col-sm-12 col-xs-12">
+                        <form  role="form" name="form"> 
+                        <div class="form-group" >
+                                <a href="" style="color:#59A0EE;font-size:18px" ng-click="goBack()">
+                                    <span><i style="margin-left:10px" class="glyphicon glyphicon-arrow-left"></i></span>
+                                    <span >Back</span>
+                                </a>
+                                <h3 style="color:#ccc;">Order Detail
+                                    <a href="" style="color:#fff;font-size:15px" ui-sref="home.updateOrder">
+                                        <span><i style="margin-left:10px" class="glyphicon glyphicon-pencil"></i></span>
+                                            <span >Edit Order</span>
+                                    </a>
+                                </h3>
+                                <div ng-show="success" class="alert alert-success">{{success}}</div>
+                                  <!--   
+                                
+                                <div style="height:1px;background-color:#000"></div> -->
+                        </div>
+                            <div class="row">
+                            <div class="col-sm-6" style="border-right: 1px solid #fff;">
+                                <div class="row form-group ">
+                                <div class="col-sm-6" style="text-align:right">
+                                    <label class="fs-subtitle" style="font-size: 17px; color:#fff;">
+                                        Order #:
+                                    </label> 
+                                </div>
+                                <div class="col-sm-6" style="top: 5px;">   <label class="paymentLabel pull-left" >
+                                <span style="margin-left:20px;color:#fff;" id="detail_orderId" >{{order.server_code}}</span>
+                                                
+                                    </label>
+                                            </div>
+                                        </div> 
+                                        
+                                        <div class="row form-group ">
+                                            <div class="col-sm-6" style="text-align:right">
+                                                <label class="fs-subtitle" style="font-size: 17px; color:#fff;">
+                                                    No Of Items:</label> 
+                                            </div>
+                                            <div class="col-sm-6" style="top: 5px;"> 
+                                                       
+                                                <label class="paymentLabel pull-left" >
+                                                    
+                                                <span style="margin-left:20px;color:#fff;" id="detail_orderId" >{{getNumOFItems(order.inventoryList)}}</span>
+                                                
+                                                </label>
+
+                                                <!-- <a href="" ng-click="viewInventory()">View Inventory
+                                                </a> -->
+                                            </div>
+                                        </div> 
+                                        <div class="row form-group ">
+                                            <div class="col-sm-6" style="text-align:right">
+                                                <label class="fs-subtitle" style="font-size: 17px; color:#fff;">
+                                                    Service Cost:</label> 
+                                            </div>
+                                            <div class="col-sm-6" style="top: 5px;"> 
+                                                       
+                                                <label class="paymentLabel pull-left"  ng-style="seviceCostFont(order.service_cost)">
+                                                    
+                                                <span style="margin-left:20px;color:#fff;" id="detail_orderId" >{{getServiceCost(order.service_cost)}}</span>
+                                                
+                                                </label>
+                                                <a href="" style="font-size:13px;margin-left:15px ;color: #00FF5E;" ng-if="invoiceAvail" ng-click="viewInvoice()">
+                                                   
+                                                    <span >View Invoice</span>
+                                                </a>
+                                            </div>
+                                        </div>  
+                                        <div class="row form-group ">
+                                            <div class="col-sm-6" style="text-align:right">
+                                                <label class="fs-subtitle" style="font-size: 17px; color:#fff;">
+                                                    Payment Status:</label> 
+                                            </div>
+                                            <div class="col-sm-6" style="top: 5px;"> 
+                                                       
+                                                <label class="paymentLabel pull-left" 
+                                                ng-style="setFontColor(order)">
+                                                    
+                                                <span style="margin-left:20px;color:#fff;" id="detail_orderId" >{{getPaymentStatus(order)}}</span>
+                                                
+                                                </label>
+                                            </div>
+                                        </div> 
+                                        <div class=" row form-group ">
+                                            <div class="col-sm-6" style="text-align:right;">
+                                                
+                                                    <label class="fs-subtitle" style="font-size: 17px;color:#fff;">
+                                                       Pickup Date & Time:</label>    
+                                               
+                                            </div>
+                                            <div class="col-sm-6" style="top: 5px;"> 
+                                                   <label class="paymentLabel pull-left" >
+                                                    
+                                                <span style="margin-left:20px;color:#fff;">{{order.pickupDate | amDateFormat:'ddd MMM D, YYYY'}} {{obj.pickupTime}}</span>
+                                                </label>
+                                            </div>
+                                            <input type="hidden" ng-model="order_code" id="order_code" name="order_code">
+                                        </div>                    
+                                        <div class="row form-group ">
+                                            <div class="col-sm-6" style="text-align:right;">
+                                                <label class="fs-subtitle" style="font-size: 17px; color:#fff;">
+                                                   Special Instruction:</label>
+                                            </div>
+                                            <div class="col-sm-6" style="top: 5px;">
+                                                         
+                                                <label class="paymentLabel pull-left" >
+                                                
+                                                <span style="margin-left:20px;color:#fff;" id="detail_Ins" >
+                                                    {{order.note}}
+                                                </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <h3 style="color:#ccc;padding-bottom:0px">Order Inventory</h3>
+                                <table id="orderTable" datatable="ng" dt-options="dtOptions"  class="table">
+                                    <thead>
+                                        <tr>
+                                            <th style="color:#fff;font-size:17px">Description</th>
+                                            <th style="color:#fff;font-size:17px">Type</th>
+                                            <th style="color:#fff;font-size:17px">Quantity</th>
+                                            
+                                        </tr>
+                                    </thead>        
+                                    <tbody>
+                                        <tr style="padding:10px" ng-repeat="obj in order.inventoryList">
+                                            <td  style="font-size:17px">{{obj.description }}</td>
+                                            <td style="font-size:17px" >{{obj.type}}</td>
+                                            <td style="font-size:17px" >{{obj.quantity}}</td> 
+                                                                         
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                                    </div>  
+                                        
+                                        </div>
+                                    </form>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+            
+        </section>
+    
+    </div>
+    <!-- #CEE1F6**/ -->
